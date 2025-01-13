@@ -5,7 +5,7 @@ include(GNUInstallDirs)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
-add_library(pikachu SHARED pikachu.cpp)
+add_library(pikachu pikachu.cpp)
 
 target_include_directories(pikachu
     PUBLIC

@@ -6,10 +6,16 @@ import os
 class pikachuRecipe(ConanFile):
     name = "charmander"
     version = "1.0"
-    package_type = "shared-library"
+    package_type = "library"
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
+    options = {"shared": [False, True],
+               "header_only": [False, True]}
+    default_options = {"shared": False,
+                       "header_only": False}
+    implements = ["auto_shared_fpic", "auto_header_only"]
+
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "charmander.cpp", "include/*", "CharmanderConfig.cmake.in"
@@ -24,6 +30,8 @@ class pikachuRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
+        if self.options.header_only:
+            tc.cache_variables["CHARMANDER_HEADER_ONLY"] = "ON"
         tc.generate()
 
     def build(self):

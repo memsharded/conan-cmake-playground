@@ -6,10 +6,12 @@ import os
 class pikachuRecipe(ConanFile):
     name = "bulbasaur"
     version = "1.0"
-    package_type = "shared-library"
+    package_type = "library"
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
+    options = {"shared": [False, True]}
+    default_options = {"shared": False}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "bulbasaur.cpp", "include/*", "BulbasaurConfig.cmake.in", "hello-bulbasaur.cpp"

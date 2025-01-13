@@ -8,7 +8,7 @@ find_package(Charmander REQUIRED)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
-add_library(bulbasaur SHARED bulbasaur.cpp)
+add_library(bulbasaur bulbasaur.cpp)
 
 target_include_directories(bulbasaur
     PUBLIC
