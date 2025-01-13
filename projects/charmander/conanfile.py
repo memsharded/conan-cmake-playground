@@ -48,3 +48,6 @@ class pikachuRecipe(ConanFile):
         self.cpp_info.libs = ["charmander"]
         self.cpp_info.set_property("cmake_file_name", "Charmander")
         self.cpp_info.set_property("cmake_target_name", "Charmander::charmander")
+        if self.options.header_only:
+            self.cpp_info.libs = []
+            self.cpp_info.defines.append("CHARMANDER_HEADER_ONLY")

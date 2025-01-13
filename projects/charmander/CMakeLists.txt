@@ -9,9 +9,9 @@ find_package(Pikachu REQUIRED)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 if(CHARMANDER_HEADER_ONLY)
-    add_compile_definitions(CHARMANDER_HEADER_ONLY)
     add_library(charmander INTERFACE)
     target_link_libraries(charmander INTERFACE Pikachu::pikachu)
+    target_compile_definitions(charmander INTERFACE CHARMANDER_HEADER_ONLY)
 else()
     add_library(charmander charmander.cpp)
 

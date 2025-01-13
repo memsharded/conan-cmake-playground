@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
-#ifdef CHARMANDER_HEADER_ONLY
+#if defined(CHARMANDER_HEADER_ONLY)
+#include "pikachu.h"
+#include <iostream>
+#include <string>
 #endif
 
 namespace charmander {
-    #ifdef CHARMANDER_HEADER_ONLY
+    #if defined(CHARMANDER_HEADER_ONLY)
     void say_hello(const std::string& name) {
         std::cout << "Hello, " << name << "! - Charmander" << std::endl;
         pikachu::say_hello(name);       
