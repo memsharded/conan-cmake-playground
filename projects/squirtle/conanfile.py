@@ -2,6 +2,7 @@ import os
 
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
+from conan.tools.microsoft import VCVars
 
 
 class pikachuRecipe(ConanFile):
@@ -22,6 +23,7 @@ class pikachuRecipe(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.generate()
+        VCVars(self).generate(scope="run")
 
     def requirements(self):
         self.requires("bulbasaur/1.0")
@@ -34,3 +36,5 @@ class pikachuRecipe(ConanFile):
         self.run(exe, env="conanrun")
         if self.settings.os == "Linux":
             self.run(f"readelf -d {exe}")
+        if self.settings.os == "Windows":
+            self.run(f"dumpbin {exe}.exe", env="conanrun")
