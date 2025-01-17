@@ -54,6 +54,10 @@ for project in projects:
         f"-DCMAKE_INSTALL_PREFIX={install_dir}/{project} {defines} {shared_cmake} {charmander_header_cmake}")
     run(f"cmake --build {build_dir}/{project} --config Release")
     run(f"cmake --install {build_dir}/{project} --config Release")
+if platform == "windows":
+    run(f"{build_dir}/squirtle/Release/hello.exe")
+elif platform == "linux":
+    run(f"readelf -d {build_dir}/squirtle/hello")
 
 
 print("***********************************************************")
