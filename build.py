@@ -3,7 +3,7 @@ import platform
 import shutil
 
 ############# CONFIGURATION ###########################
-shared = False
+shared = True
 charmander_header = False
 #######################################################
 
