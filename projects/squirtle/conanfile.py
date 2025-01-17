@@ -37,4 +37,4 @@ class pikachuRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.run(f"readelf -d {exe}")
         if self.settings.os == "Windows":
-            self.run(f"dumpbin {exe}.exe", env="conanrun")
+            self.run(f"dumpbin /DEPENDENTS {exe}.exe", env="conanrun")
